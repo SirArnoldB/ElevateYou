@@ -5,12 +5,14 @@ const Card = (props) => {
   const [flipped, setFlipped] = useState(false);
 
   const prompt = props.card.prompt;
-  const actionSteps = props.card.actionSteps.map((action_step) => (
-    <li>{action_step}</li>
+  const actionSteps = props.card.actionSteps.map((action_step, index) => (
+    <li key={`step-${index}`}>{action_step}</li>
   ));
-  const books = props.card.resources.Books.map((book) => <li>{book}</li>);
-  const onlineResources = props.card.resources.Online.map((item) => (
-    <li>
+  const books = props.card.resources.Books.map((book, index) => (
+    <li key={`book-${index}`}>{book}</li>
+  ));
+  const onlineResources = props.card.resources.Online.map((item, index) => (
+    <li key={`resource-${index}`}>
       <a href={item.url} target="_blank" rel="noopener noreferrer">
         {item.title}
       </a>
