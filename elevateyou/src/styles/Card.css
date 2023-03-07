@@ -1,0 +1,109 @@
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    box-shadow: 0 0 5px 2px #0000004d;
+    transform-style: preserve-3d;
+    height: 30rem;
+    width: 40rem;
+    cursor: pointer;
+    transition: .15s;
+    transform: perspective(1000px) rotateX(var(--rotate-X, 0));
+    background-color: #0000004d;
+    font-weight: 700;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    padding: 5px;
+    justify-content: center;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    font-weight: 500;
+    font-size: xx-large;
+}
+
+.card-back {
+    transform: rotateX(180deg);
+}
+
+.card.flipped {
+    --rotate-X: 180deg;
+}
+
+.card:hover {
+    box-shadow: 0 0 5px 2px #0000004d;
+}
+
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.card-back-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    margin: 0.5rem 0;
+    background: #cfd2d4;
+    color: rgb(83, 83, 204);
+    margin: 5px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+.feelings {
+    background-color: #35a9db82;
+}
+
+.growth-goals {
+    background-color: #0c07fa82;
+}
+
+.daily-life {
+    background-color: #80e83f82;
+}
+
+.aily-routine {
+    background-color: #553fe882;
+}
+
+.beliefs-identity {
+    background-color: #3fb5e882;
+}
+
+.living-life {
+    background-color: #a7e83f82;
+}
+
+.start {
+    background-color: #1612fc82;
+}
