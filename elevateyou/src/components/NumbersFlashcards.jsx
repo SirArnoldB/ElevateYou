@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from "react";
-import NextButton from "./NextButton";
 import "../styles/Card.css";
 import NumbersStartForm from "./NumbersStartForm";
-import axios from "axios";
-import {
-  BsArrowRight,
-  BsArrowLeft,
-  BsShuffle,
-  BsArrowRepeat,
-} from "react-icons/bs";
 import "../styles/NumbersFlashcards.css";
-import RestartModal from "./RestartModal";
-import {
-  getRandomNumFacts,
-  getCustomNumFacts,
-} from "../utils/fetchNumbersFacts";
 import shuffleArray from "../utils/shuffleArray";
 import StartCard from "./StartCard";
 import NumbersCard from "./NumbersCard";
@@ -67,6 +54,7 @@ const NumbersFlashCards = () => {
 
   const handleNextCard = () => {
     if (currentCardIndex < cards.length - 1) {
+      setFlipped(false);
       setPreviousCardIndex(currentCardIndex);
       setCurrentCardIndex(currentCardIndex + 1);
     }
@@ -92,8 +80,6 @@ const NumbersFlashCards = () => {
     getCards(rangeType, min, max, numQuestions);
   };
 
-  console.log(currentCard);
-
   const handleRestartCurrent = () => {
     setShowRestartModal(false);
     setCurrentCardIndex(0);
@@ -102,6 +88,14 @@ const NumbersFlashCards = () => {
   const handleStartNew = () => {
     setShowRestartModal(false);
     setShowStartForm(true);
+  };
+
+  const handleShowModal = () => {
+    setShowRestartModal(true);
+  };
+
+  const handleHideModal = () => {
+    setShowRestartModal(false);
   };
 
   const renderProgressBar = () =>
@@ -125,18 +119,20 @@ const NumbersFlashCards = () => {
           {renderProgressBar()}
           {renderScore()}
           <NumbersCard
+            cards={cards}
             currentCard={cards[currentCardIndex]}
             flipped={flipped}
             setFlipped={setFlipped}
           />
           <CardControls
+            showRestartModal={showRestartModal}
             cards={cards}
             currentCardIndex={currentCardIndex}
             handleNextCard={handleNextCard}
             handlePrevCard={handlePrevCard}
             handleShuffle={handleShuffle}
-            showRestartModal={showRestartModal}
-            setShowRestartModal={setShowRestartModal}
+            handleShowModal={handleShowModal}
+            handleHideModal={handleHideModal}
             handleRestartCurrent={handleRestartCurrent}
             handleStartNew={handleStartNew}
           />

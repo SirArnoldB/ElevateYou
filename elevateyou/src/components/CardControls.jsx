@@ -5,18 +5,20 @@ import {
   BsShuffle,
   BsArrowRepeat,
 } from "react-icons/bs";
+import RestartModal from "./RestartModal";
 
-const CardControls = (
+const CardControls = ({
+  showRestartModal,
   cards,
   currentCardIndex,
   handleNextCard,
   handlePrevCard,
   handleShuffle,
-  showRestartModal,
-  setShowRestartModal,
+  handleShowModal,
+  handleHideModal,
   handleRestartCurrent,
-  handleStartNew
-) => (
+  handleStartNew,
+}) => (
   <div className="controls">
     <button
       className="btn btn-icon btn-secondary me-2"
@@ -35,18 +37,15 @@ const CardControls = (
     <button className="btn btn-icon btn-secondary me-2" onClick={handleShuffle}>
       <BsShuffle size={30} />
     </button>
-    <button
-      className="btn btn-icon btn-secondary"
-      onClick={setShowRestartModal(true)}
-    >
+    <button className="btn btn-icon btn-secondary" onClick={handleShowModal}>
       <BsArrowRepeat size={30} />
     </button>
     {showRestartModal && (
       <RestartModal
-        showModal={showRestartModal}
-        hideModal={setShowRestartModal}
-        restartCurrent={handleRestartCurrent}
-        startNew={handleStartNew}
+        showRestartModal={showRestartModal}
+        handleHideModal={handleHideModal}
+        handleRestartCurrent={handleRestartCurrent}
+        handleStartNew={handleStartNew}
       />
     )}
   </div>

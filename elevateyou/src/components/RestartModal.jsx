@@ -1,11 +1,26 @@
 import React from "react";
-import { Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
+import "../styles/RestartModal.css";
 
-const RestartModal = ({ showModal, hideModal, restartCurrent, startNew }) => {
+const RestartModal = ({
+  showRestartModal,
+  handleHideModal,
+  handleRestartCurrent,
+  handleStartNew,
+}) => {
   return (
-    <Modal show={showModal} onHide={() => hideModal(false)}>
+    <Modal
+      show={showRestartModal}
+      onHide={handleHideModal}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
       <Modal.Header closeButton>
-        <Modal.Title>Restart Cards</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Restart Cards
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <p>
@@ -13,22 +28,12 @@ const RestartModal = ({ showModal, hideModal, restartCurrent, startNew }) => {
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <button
-          variant="secondary"
-          onClick={() => {
-            restartCurrent();
-          }}
-        >
+        <Button variant="secondary" onClick={handleRestartCurrent}>
           Restart Current Set
-        </button>
-        <button
-          variant="primary"
-          onClick={() => {
-            startNew();
-          }}
-        >
+        </Button>
+        <Button variant="primary" onClick={handleStartNew}>
           Start New Set
-        </button>
+        </Button>
       </Modal.Footer>
     </Modal>
   );
