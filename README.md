@@ -33,9 +33,9 @@ Time spent: **12** hours spent in total
 
     Here's a walkthrough of implemented required features:
 
-         <img src='https://github.com/SirArnoldB/ElevateYou/blob/main/elevateyou/ElevateYou.gif' title='ElevateYou Walkthrough' width='' alt='ElevateYou Walkthrough' />
+      <img src='https://github.com/SirArnoldB/ElevateYou/blob/main/elevateyou/ElevateYou2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-         <!-- GIF tool used! -->
+      <!-- GIF tool used! -->
 
     GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
