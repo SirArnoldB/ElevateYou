@@ -9,18 +9,8 @@ import CardControls from "./CardControls";
 import fetchCards from "../utils/fetchNumbersCards";
 
 const NumbersFlashCards = () => {
-  // states
   const [cards, setCards] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [timerOn, setTimerOn] = useState(false);
-  //   const [timerSeconds, setTimerSeconds] = useState(15);
-  //   const [customRange, setCustomRange] = useState(false);
-  //   const [minValue, setMinValue] = useState(0);
-  //   const [maxValue, setMaxValue] = useState(0);
-  const [loading, setLoading] = useState(false);
-  //   const [progress, setProgress] = useState(0);
-  //   const [bestScore, setBestScore] = useState(0);
-  //   const [currentScore, setCurrentScore] = useState(0);
   const [showStartForm, setShowStartForm] = useState(true);
   const [flipped, setFlipped] = useState(false);
   const [showStartCard, setShowStartCard] = useState(false);
@@ -29,18 +19,13 @@ const NumbersFlashCards = () => {
   const [showRestartModal, setShowRestartModal] = useState(false);
 
   const getCards = async (rangeType, min, max, numQuestions) => {
-    setLoading(true);
-
     const numbersCards = await fetchCards(rangeType, min, max, numQuestions);
 
     if (numbersCards.length) {
       setCards(numbersCards);
     } else {
-      // No cards found
       console.log("No Cards Found.");
     }
-
-    setLoading(false);
   };
 
   const handleShuffle = () => {
@@ -62,19 +47,13 @@ const NumbersFlashCards = () => {
 
   const handlePrevCard = () => {
     if (currentCardIndex > 0) {
+      setFlipped(false);
       setPreviousCardIndex(currentCardIndex);
       setCurrentCardIndex(currentCardIndex - 1);
     }
   };
 
-  useEffect(() => {
-    if (currentCardIndex !== previousCardIndex) {
-      setCurrentCard(cards[currentCardIndex]);
-    }
-  }, [currentCardIndex]);
-
-  const handleStart = (rangeType, min, max, isTimer, numQuestions) => {
-    setTimerOn(isTimer);
+  const handleStart = (rangeType, min, max, numQuestions) => {
     setShowStartForm(false);
     setShowStartCard(true);
     getCards(rangeType, min, max, numQuestions);
@@ -98,13 +77,11 @@ const NumbersFlashCards = () => {
     setShowRestartModal(false);
   };
 
-  const renderProgressBar = () =>
-    // TODO: render the progress bar
-    console.log("renderProgressBar");
-
-  const renderScore = () =>
-    // TODO: render the current score and best score
-    console.log("renderScore");
+  useEffect(() => {
+    if (currentCardIndex !== previousCardIndex) {
+      setCurrentCard(cards[currentCardIndex]);
+    }
+  }, [currentCardIndex]);
 
   return (
     <>
@@ -116,8 +93,6 @@ const NumbersFlashCards = () => {
       {showStartCard && <StartCard setShowStartCard={setShowStartCard} />}
       {!showStartForm && !showStartCard && (
         <>
-          {renderProgressBar()}
-          {renderScore()}
           <NumbersCard
             cards={cards}
             currentCard={cards[currentCardIndex]}

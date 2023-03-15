@@ -17,9 +17,18 @@ const RestartModal = ({
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+      <Modal.Header>
+        <Modal.Title>
           Restart Cards
+          <button
+            type="button"
+            className="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            onClick={handleHideModal}
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -38,5 +47,20 @@ const RestartModal = ({
     </Modal>
   );
 };
+
+{
+  /* <Modal.Header>
+  <Modal.Title>
+    Restart Cards
+    <span
+      className="float-end"
+      onClick={handleClose}
+      style={{ cursor: "pointer" }}
+    >
+      X
+    </span>
+  </Modal.Title>
+</Modal.Header>; */
+}
 
 export default RestartModal;

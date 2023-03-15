@@ -6,7 +6,6 @@ const NumbersStartForm = ({ onStart }) => {
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
   const [isRandom, setIsRandom] = useState(true);
-  const [isTimerOn, setIsTimerOn] = useState(false);
   const [numQuestions, setNumQuestions] = useState(
     import.meta.env.VITE_DEFAULT_QUESTION_COUNT
   );
@@ -14,9 +13,17 @@ const NumbersStartForm = ({ onStart }) => {
   const handleStart = (event) => {
     event.preventDefault();
     if (isRandom) {
-      onStart("random", null, null, isTimerOn, numQuestions);
+      onStart("random", null, null, numQuestions);
     } else {
-      onStart("custom", parseInt(min), parseInt(max), isTimerOn, numQuestions);
+      const minVal = parseInt(min);
+      const maxVal = parseInt(max);
+      if (maxVal - minVal < 5) {
+        alert(
+          "Maximum value should be greater than minimum value by at least 5"
+        );
+        return;
+      }
+      onStart("custom", minVal, maxVal, numQuestions);
     }
   };
 
@@ -43,7 +50,7 @@ const NumbersStartForm = ({ onStart }) => {
             <Form.Label>Minimum:</Form.Label>
             <Form.Control
               type="number"
-              min="-999999999"
+              min="0"
               max="999999999"
               value={min}
               onChange={(event) => setMin(event.target.value)}
@@ -52,7 +59,7 @@ const NumbersStartForm = ({ onStart }) => {
             <Form.Label>Maximum:</Form.Label>
             <Form.Control
               type="number"
-              min="-999999999"
+              min="0"
               max="999999999"
               value={max}
               onChange={(event) => setMax(event.target.value)}
@@ -74,18 +81,6 @@ const NumbersStartForm = ({ onStart }) => {
           onChange={(event) => setNumQuestions(event.target.value)}
           required
         />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="timerSelector">
-        <Form.Label>Timer:</Form.Label>
-        <div>
-          <Form.Check
-            type="switch"
-            id="timer-switch"
-            label=""
-            checked={isTimerOn}
-            onChange={() => setIsTimerOn(!isTimerOn)}
-          />
-        </div>
       </Form.Group>
       <Button variant="primary" type="submit" className="form-start-btn">
         Start

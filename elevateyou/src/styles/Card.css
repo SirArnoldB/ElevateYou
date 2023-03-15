@@ -10,8 +10,21 @@
     cursor: pointer;
     transition: .15s;
     transform: perspective(1000px) rotateX(var(--rotate-X, 0));
-    background-color: #0000004d;
+    background-color: #0000004d !important;
     font-weight: 700;
+    color: floralwhite;
+}
+
+.flashcard-options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card {
+    flex-direction: column !important;
+    justify-content: space-around !important;
+    margin: 3.5rem;
 }
 
 .card-front,
@@ -54,8 +67,9 @@
 .card-back-content {
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
 }
 
 ul {

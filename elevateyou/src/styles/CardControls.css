@@ -1,0 +1,25 @@
+.restart-btn {
+    margin-right: 10rem;
+}
+
+.shuffle-btn {
+    margin-left: 10rem;
+}
+
+.prev-btn,
+.next-btn {
+    margin: 0 1rem;
+}
+
+.restart-btn,
+.shuffle-btn,
+.prev-btn,
+.next-btn {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}

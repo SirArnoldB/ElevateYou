@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Form } from "react-bootstrap";
+import "../styles/NumbersCard.css";
 
 const NumbersCard = ({ cards, currentCard, flipped, setFlipped }) => {
   const [answer, setAnswer] = useState("");
@@ -44,7 +45,7 @@ const NumbersCard = ({ cards, currentCard, flipped, setFlipped }) => {
 
   return (
     <>
-      <div>
+      <div className="stats">
         <p>{`Current Score: ${currentScore}/${cards.length}`}</p>
         <p>Best Score: {bestScore}</p>
       </div>
@@ -58,17 +59,25 @@ const NumbersCard = ({ cards, currentCard, flipped, setFlipped }) => {
               {" "}
               <Card.Body>
                 <Card.Title>{currentCard.text}</Card.Title>
-                <Form onSubmit={handleAnswerSubmit} onClick={handleFormClick}>
+                <Form
+                  onSubmit={handleAnswerSubmit}
+                  onClick={handleFormClick}
+                  className="answer-form"
+                >
                   <Form.Group controlId="formAnswer">
-                    <Form.Label>Answer:</Form.Label>
                     <Form.Control
                       type="text"
                       value={answer}
                       onChange={handleAnswerChange}
+                      placeholder="Enter Your Answer Here"
                       required
                     />
                   </Form.Group>
-                  <Button variant="primary" type="submit">
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    className="check-answer-btn"
+                  >
                     Check
                   </Button>
                 </Form>

@@ -1,0 +1,4 @@
+.card-body {
+    /* Disable Boostrap flex */
+    flex: none !important;
+}

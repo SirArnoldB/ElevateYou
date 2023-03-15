@@ -1,27 +1,28 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import "../styles/StartCard.css";
 
-const StartCard = ({ setShowStartCard }) => (
-  <div className="start-card">
-    <div className="card-container">
-      <div className="card">
-        <div className="card-front">
-          <div className="card-front-content">
-            <h3>Welcome Numbers Flashcards!</h3>
-            <h5>
-              In this game, you will be given a fact about a number and you will
-              have to guess the number. You will have 15 seconds to answer each
-              question. If you answer correctly, you will get 1 point. If you
-              answer incorrectly, you will lose 1 point. If you run out of time,
-              you will lose 1 point. You can also shuffle the cards, go to the
-              previous card, or go to the next card. Good luck!
-            </h5>
-            <h6>Ready?</h6>
-            <button onClick={() => setShowStartCard(false)}>Begin</button>
-          </div>
+const StartCard = ({ setShowStartCard }) => {
+  return (
+    <Card style={{ width: "50rem" }}>
+      <Card.Body>
+        <Card.Title>
+          <h2>Welcome Numbers Flashcards!</h2>
+        </Card.Title>
+        <div className="start-card-text">
+          <h4>
+            In this game, you will be given a fact about a number and you will
+            have to guess the number.
+          </h4>
+          <h5>Good Luck!</h5>
         </div>
-      </div>
-    </div>
-  </div>
-);
+        <Button variant="primary" onClick={() => setShowStartCard(false)}>
+          Begin
+        </Button>
+      </Card.Body>
+    </Card>
+  );
+};
 
 export default StartCard;
