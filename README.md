@@ -1,4 +1,4 @@
-# Web Development Project 2 - _ElevateYou_
+# Web Development Project 2 + 3 - _ElevateYou_
 
 Submitted by: **Arnold Bhebhe**
 
